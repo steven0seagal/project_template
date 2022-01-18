@@ -38,7 +38,7 @@ FROM python:3.8.2-alpine
 RUN mkdir -p /home/app
 
 # create the app user
-RUN addgroup -S app && adduser -S app -G app
+RUN addgroup -S bartek && adduser -S bartek -G bartek
 
 # create the appropriate directories
 ENV HOME=/home/app
@@ -65,10 +65,10 @@ RUN chmod +x  $APP_HOME/entrypoint.prod.sh
 COPY . $APP_HOME
 
 # chown all the files to the app user
-RUN chown -R app:app $APP_HOME
+RUN chown -R bartek:bartek $APP_HOME
 
 # change to the app user
-USER app
+USER bartek
 
 # run entrypoint.prod.sh
 ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
