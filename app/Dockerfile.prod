@@ -55,7 +55,7 @@ FROM python:3.8-slim-buster
 RUN mkdir -p /home/app
 
 # create the app user
-RUN addgroup app
+RUN #addgroup app
 RUN adduser app
 RUN usermod -g app app
 # create the appropriate directories
