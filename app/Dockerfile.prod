@@ -55,9 +55,9 @@ FROM python:3.8-slim-buster
 RUN mkdir -p /home/app
 
 # create the app user
-#RUN addgroup -S app
-#RUN adduser -S app -G app
-
+RUN addgroup app
+RUN adduser app
+RUN usermod -g app app
 # create the appropriate directories
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
@@ -74,7 +74,7 @@ RUN pip install --no-cache /wheels/*
 
 # copy entrypoint.prod.sh
 COPY ./entrypoint.prod.sh .
-RUN sed -i 's/\r$//g'  $APP_HOME/entrypoint.prod.sh
+RUN sed -i 's/\r$//g'  $APP_HOME/entrypoint.prod.shS
 RUN chmod +x  $APP_HOME/entrypoint.prod.sh
 
 # copy project
