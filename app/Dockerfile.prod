@@ -31,7 +31,7 @@ RUN apt-get update \
 
 # install psycopg2 dependencies
 RUN apt update \
-    && apt-get install postgresql-dev gcc python3-dev musl-dev
+    && apt-get install -y postgresql-dev gcc python3-dev musl-dev
 
 # lint
 RUN pip install --upgrade pip
